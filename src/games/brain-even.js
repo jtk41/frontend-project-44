@@ -1,33 +1,22 @@
 #!/usr/bin/env node
+/* eslint-disable import/extensions */
 
-import readlineSync from 'readline-sync';
-import getUserName from '../cli.js';
+import { getRandomNumber } from '../cli.js';
+import gameEngine from '../gameEngine.js';
 
-const even = () => {
-  const userName = getUserName();
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  for (let i = 0; i < 3; i += 1) {
-    let correctAnswer = '';
+const gameLogic = () => {
+  let correctAnswer;
 
-    const randomNumber = Math.ceil(Math.random() * 100);
-    console.log(`Question:${randomNumber}`);
+  const randomNumber = getRandomNumber(100);
 
-    const userAnswer = readlineSync.question();
-    if (userAnswer !== 'yes' && userAnswer !== 'no') {
-      return console.log(`${userAnswer} not yes or not`);
-    }
-    if (randomNumber % 2 === 0) {
-      correctAnswer = 'yes';
-    } else {
-      correctAnswer = 'no';
-    }
-    if (correctAnswer.toString() === userAnswer) {
-      console.log(`Your answer: ${correctAnswer}\ncorrect`);
-    } else {
-      return console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}.\nLet's try again, ${userName}!`);
-    }
+  if (randomNumber % 2 === 0) {
+    correctAnswer = 'yes';
+  } else {
+    correctAnswer = 'no';
   }
-  return true;
+  return { correctAnswer, question: `Question: ${randomNumber}` };
 };
-even();
+
+gameEngine(description, gameLogic);
