@@ -1,40 +1,31 @@
 #!/usr/bin/env node
+/* eslint-disable import/extensions */
 
-import readlineSync from 'readline-sync';
-import getUserName, { randomNumberTo100, checkAnswer } from '../cli.js';
+import { getRandomNumber } from '../cli.js';
+import gameEngine from '../gameEngine.js';
 
-const calc = () => {
-  const userName = getUserName();
+const description = 'What is the result of the expression?';
+
+const gameLogic = () => {
+  const randomOperator = Math.floor(Math.random() * 3);
+
   const operators = ['+', '-', '*'];
 
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  const firstRandNumber = getRandomNumber(100);
 
-  for (let i = 0; i < 3; i += 1) {
-    const randomOperator = Math.floor(Math.random() * 3);
+  const secondRandNumber = getRandomNumber(100);
 
-    const firstRandNumber = randomNumberTo100();
-    
-    const secondRandNumber = randomNumberTo100();
+  let correctAnswer;
 
-    let correctAnswer;
-    
-    if (randomOperator === 0) {
-      correctAnswer = firstRandNumber + secondRandNumber;
-    } else if (randomOperator === 1) {
-      correctAnswer = firstRandNumber - secondRandNumber;
-    } else {
-      correctAnswer = firstRandNumber * secondRandNumber;
-    }
-    
-    console.log(`Question: ${firstRandNumber} ${operators[randomOperator]} ${secondRandNumber}`);
-    
-    const userAnswer = readlineSync.question();
-
-    checkAnswer(correctAnswer, userAnswer, userName)
+  if (randomOperator === 0) {
+    correctAnswer = firstRandNumber + secondRandNumber;
+  } else if (randomOperator === 1) {
+    correctAnswer = firstRandNumber - secondRandNumber;
+  } else {
+    correctAnswer = firstRandNumber * secondRandNumber;
   }
 
-  console.log(`Congratulations, ${userName}!`);
-
-  return true;
+  return { correctAnswer, question: `Question: ${firstRandNumber} ${operators[randomOperator]} ${secondRandNumber}` };
 };
-calc();
+
+gameEngine(description, gameLogic);

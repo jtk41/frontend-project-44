@@ -4,7 +4,11 @@
   "type": "module",
   "bin": {
     "brain-games": "bin/brain-games.js",
-    "brain-even": "bin/brain-even.js"
+    "brain-even": "src/games/brain-even.js",
+    "brain-calc": "src/games/brain-calc.js",
+    "brain-gcd": "src/games/brain-gcd.js",
+    "brain-progression": "src/games/brain-progression.js",
+    "brain-prime": "src/games/brain-prime.js"
   },
   "description": "[![Actions Status](https://github.com/jtk41/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/jtk41/frontend-project-44/actions)",
   "main": "index.js",
@@ -19,6 +23,7 @@
   "devDependencies": {
     "eslint": "^8.55.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.0"
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-react": "^7.37.0"
   }
 }
