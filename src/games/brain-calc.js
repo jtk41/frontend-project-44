@@ -11,21 +11,21 @@ const gameLogic = () => {
 
   const operators = ['+', '-', '*'];
 
-  const firstRandNumber = getRandomNumber(100);
+  const firstRandomNumber = getRandomNumber(100);
 
-  const secondRandNumber = getRandomNumber(100);
+  const secondRandomNumber = getRandomNumber(100);
 
   let correctAnswer;
 
   if (randomOperator === 0) {
-    correctAnswer = firstRandNumber + secondRandNumber;
+    correctAnswer = firstRandomNumber + secondRandomNumber;
   } else if (randomOperator === 1) {
-    correctAnswer = firstRandNumber - secondRandNumber;
+    correctAnswer = firstRandomNumber - secondRandomNumber;
   } else {
-    correctAnswer = firstRandNumber * secondRandNumber;
+    correctAnswer = firstRandomNumber * secondRandomNumber;
   }
 
-  return { correctAnswer, question: `Question: ${firstRandNumber} ${operators[randomOperator]} ${secondRandNumber}` };
+  return { correctAnswer, question: `Question: ${firstRandomNumber} ${operators[randomOperator]} ${secondRandomNumber}` };
 };
 
 gameEngine(description, gameLogic);
