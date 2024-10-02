@@ -8,16 +8,16 @@ const description = 'Answer "yes" if given number is prime. Otherwise answer "no
 
 const gameLogic = () => {
   let correctAnswer = 'yes';
-  const randNumber = getRandomNumber(100);
-  if (randNumber <= 1) {
+  const randomNumber = getRandomNumber(100);
+  if (randomNumber <= 1) {
     correctAnswer = 'no';
   }
-  for (let i = 2; i <= Math.sqrt(randNumber); i += 1) {
-    if (randNumber % i === 0) {
+  for (let i = 2; i <= Math.sqrt(randomNumber); i += 1) {
+    if (randomNumber % i === 0) {
       correctAnswer = 'no';
     }
   }
-  return { correctAnswer, question: `Question: ${randNumber}` };
+  return { correctAnswer, question: `Question: ${randomNumber}` };
 };
 
 gameEngine(description, gameLogic);
