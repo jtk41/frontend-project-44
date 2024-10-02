@@ -8,13 +8,13 @@ const findGCD = (a, b) => (b === 0 ? a : findGCD(b, a % b));
 const description = 'Find the greatest common divisor of given numbers.';
 
 const gameLogic = () => {
-  const firstRandNumber = getRandomNumber(100);
+  const firstRandomNumber = getRandomNumber(100);
 
-  const secondRandNumber = getRandomNumber(100);
+  const secondRandomNumber = getRandomNumber(100);
 
-  const correctAnswer = findGCD(firstRandNumber, secondRandNumber);
+  const correctAnswer = findGCD(firstRandomNumber, secondRandomNumber);
 
-  return { correctAnswer, question: `Question: ${firstRandNumber} ${secondRandNumber}` };
+  return { correctAnswer, question: `Question: ${firstRandomNumber} ${secondRandomNumber}` };
 };
 
 gameEngine(description, gameLogic);
